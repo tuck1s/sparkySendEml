@@ -47,18 +47,17 @@ To:
     "Bob" <bob.lumreeker@emltest.sink.sparkpostmail.com>
 Cc:
     "Alice" <alice.cleanheels@emltest.sink.sparkpostmail.com>
-    "Alice2" <alice.cleanheels@emltest.sink.sparkpostmail.com>
-    "Alice3" <alice.cleanheels@emltest.sink.sparkpostmail.com>
 Bcc:
     "Charles" <charles.tapdancer@emltest.sink.sparkpostmail.com>
-    "Charles2" <charles.tapdancer@emltest.sink.sparkpostmail.com>
-    "Charles3" <charles.tapdancer@emltest.sink.sparkpostmail.com>
 Subject:  The Messenger - Email Insights from SparkPost
 Total message length  27398 bytes
-Total accepted recipients: 7
+Total accepted recipients: 3
 Total rejected recipients: 0
 Transmission id:           30631141777298845
 ```
+
+Note the `Cc:` `Bcc:` entries above are to demo the capabilities of the tool. Usually you would create a campaign mailing
+with just a single `To:` recipient.
 
 ## Preparing input files for update
 The nature of eml files is fully-formed, RFC-compliant content.  You can make files by creating a draft in your
