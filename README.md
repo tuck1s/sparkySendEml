@@ -61,7 +61,7 @@ Transmission id:           30631141777298845
 ```
 
 ## Preparing input files for update
-The nature of eml files is fully-formed, RFC-compliant content.  You can make files by simply saving a draft in your
+The nature of eml files is fully-formed, RFC-compliant content.  You can make files by creating a draft in your
 favourite email client such as OSX mail.app or Mozilla Thunderbird, and saving it as a file (or just dragging it to the desktop).
 
 Open the file in a text editor, check and remove any headers you don't want. The minimum you need are `From:`, `To:` and you should also have a `Subject:`
@@ -85,10 +85,9 @@ EDITOR'S PICK
 :
 ```
 
-## Performance considerations
 This tool sends to the recipients specified in the .eml file, so it's ideal for personalised mailings where you have fully-formed messages.
 
 ## See also
-If you want to leverage the template and multi-recipient generation capability of SparkPost, take look at 
-[Sending Scheduled Mailings Simply with SparkPost](https://www.sparkpost.com/blog/sending-scheduled-mailings-simply/)
+If you want to leverage the template substitution and multi-recipient generation capability of SparkPost, take look at 
+[Sending Scheduled Mailings Simply with SparkPost.](https://www.sparkpost.com/blog/sending-scheduled-mailings-simply/)
 
