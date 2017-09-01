@@ -1,0 +1,5 @@
+*.json
+*.ini
+.idea
+*.csv
+test.eml
