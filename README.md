@@ -87,6 +87,13 @@ EDITOR'S PICK
 This tool sends to the recipients specified in the .eml file, so it's ideal for personalised mailings where you have fully-formed messages.
 
 ## See also
+
+Article explaining why you should run your campaigns with individual To: recipients: [Thou Shalt Not BCC](https://www.sparkpost.com/blog/thou-shalt-not-bcc-pitfalls/)
+
+[Using CC and BCC with the REST API.](https://www.sparkpost.com/docs/faq/cc-bcc-with-rest-api/)
+
+[What are the differences between CC, BCC, and archive recipients?](https://www.sparkpost.com/docs/faq/cc-bcc-archive-recipients/)
+
 If you want to leverage the template substitution and multi-recipient generation capability of SparkPost, take look at 
 [Sending Scheduled Mailings Simply with SparkPost.](https://www.sparkpost.com/blog/sending-scheduled-mailings-simply/)
 
