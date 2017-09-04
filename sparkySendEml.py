@@ -23,7 +23,7 @@ def sendTransmission(uri, apiKey, sendObj):
     startT = time.time()
     try:
         path = uri+'/api/v1/transmissions'
-        h = {'Authorization': apiKey, 'Accept': 'application/json'}
+        h = {'Authorization': apiKey, 'Accept': 'application/json', 'Content-Type': 'application/json'}
         response = requests.post(path, timeout=T, headers=h, data=json.dumps(sendObj))
         endT = time.time()
         if(response.status_code == 200):
