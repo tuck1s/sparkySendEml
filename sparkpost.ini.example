@@ -1,0 +1,4 @@
+[SparkPost]
+# Sparkpost.com
+Authorization = <YOUR API KEY>
+#Host = demo.e.sparkpost.com                        # Only required for Enterprise service
