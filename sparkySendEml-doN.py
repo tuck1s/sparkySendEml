@@ -2,7 +2,7 @@
 from __future__ import print_function
 import configparser, time, json, sys, os, email, requests
 
-T = 20                  # Global timeout value for API requests
+T = 90                  # Global timeout value for API requests
 
 def printHelp():
     progName = sys.argv[0]
@@ -12,8 +12,9 @@ def printHelp():
     print('  Parse and send an RFC822-compliant file (e.g. .eml extension) via SparkPost.')
     print('')
     print('SYNOPSIS')
-    print('  ./' + shortProgName + ' infile\n')
+    print('  ./' + shortProgName + ' infile N\n')
     print('  infile must contain RFC822 formatted content including subject, from, to, and MIME parts.')
+    print('  N = integer, number of times to send the message')
     print('')
     print('  cc and bcc headers are also read and applied.');
 
@@ -94,12 +95,23 @@ if len(sys.argv) >= 2:
             'content': {'email_rfc822': rfc822msg},
             'recipients': allRecips
         })
-        
+
         print('Sending to ',baseUri)
-        res = sendTransmission(baseUri, apiKey, sendObj)
-        if res:
-            print("Total accepted recipients:",res['results']['total_accepted_recipients'])
-            print("Total rejected recipients:",res['results']['total_rejected_recipients'])
-            print("Transmission id:          ",res['results']['id']);
+
+        if len(sys.argv) >= 3:
+            # optional "do n times" parameter
+            doN = int(sys.argv[2])
+            print('Sending ', doN, 'times')
+            print('timestamp, API_response_time, result');
+            for i in range(0, doN):
+                startT = time.time()
+                res = sendTransmission(baseUri, apiKey, sendObj)
+                endT = time.time()
+                outstr = time.strftime('[%Y-%m-%dT%H:%M:%S%z]', time.gmtime(startT))
+                outstr += ',{0:.3f}'.format(endT - startT)
+                outstr += ',' + json.dumps(res)
+                print(outstr)
+        else:
+            print('missing parameter N for number of times to send the message')
 else:
     printHelp()
