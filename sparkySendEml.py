@@ -56,7 +56,7 @@ if cfg.get('Binding'):
 if cfg.get('Return-Path'):
     sendObj['return_path'] = cfg.get('Return-Path')
 if cfg.get('Campaign'):
-    sendObj['campaign']  = cfg.get('Campaign')
+    sendObj['campaign_id']  = cfg.get('Campaign')               # native JSON attribute name, as not using the sparkpost-python lib
 
 if len(sys.argv) >= 2:
     emlFname = sys.argv[1]
