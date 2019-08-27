@@ -79,10 +79,9 @@ if len(sys.argv) >= 2:
                 allRecips.append(r)
 
         # Remove any bcc headers from the message payload. Work backwards, as deletion changes later indices.
-        for i in reversed(range(len(msg._headers))):
-            hdrName = msg._headers[i][0].lower()
-            if hdrName == 'bcc':
-                del(msg._headers[i])
+        for header in msg._headers:
+            if header[0].lower() == 'bcc':
+                msg._headers.remove(header)
 
         rfc822msg = msg.as_bytes().decode('utf8')
         #rfc822msg = 'Content-Type: text/plain\nFrom: \"stevet test\" <stevet@ca.mail.e.sparkpost.com>\nSubject: Example Email\n\nHello World'
