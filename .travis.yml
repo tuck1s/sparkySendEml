@@ -11,8 +11,6 @@ install:
   - pip install pipenv
   - pipenv install
 
-before_script:
-
 script:
   # basic tests - command line tool installed and gives help/usage
   - ./sparkySendEml.py -h

@@ -168,7 +168,7 @@ send_obj['content'] = {'email_rfc822': msg_str}
 stderr_report('Subject',msg['subject'])
 stderr_report('Message length (bytes)',len(msg_str))
 if args.json_out:
-    print(json.dumps(send_obj, indent=2))
+    print(json.dumps(send_obj, indent=2, sort_keys=True)) # Sort keys so output is predictable
 else:
     stderr_report('Sending via', url)
     res = send_transmission(url, apiKey, send_obj)
