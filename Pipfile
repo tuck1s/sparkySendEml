@@ -8,5 +8,6 @@ verify_ssl = true
 [packages]
 requests = "*"
 
-[requires]
-python_version = "3.7"
+#Do not require a specific Python version
+#[requires]
+#python_version = "3.7"

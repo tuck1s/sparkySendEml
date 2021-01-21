@@ -1,6 +1,8 @@
-From: SparkPost Test <test@email.example.com>
+From: "SparkPost Test" <test@email.thetucks.com>
 Reply-To: theteam@example.com
-To: "Bob" <bob.lumreeker@emltest.sink.sparkpostmail.com>
+To: Alice <alice@emltest.sink.sparkpostmail.com>, "Bob Lumreeker" <bob.lumreeker@gmail.com>
+Cc: "Charlie" <charles.tapdancer@gmail.com>, "Diana" <diana@emltest.sink.sparkpostmail.com>
+Bcc: "Ewina" <ed@emltest.sink.sparkpostmail.com>, "Fred" <steve.tuck@sparkpost.com>
 Subject: The Messenger: Email Insights from SparkPost
 MIME-Version: 1.0
 Content-Type: multipart/alternative;

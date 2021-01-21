@@ -4,3 +4,6 @@
 *.csv
 test.eml
 test_ca.eml
+setenv.sh
+Pipfile.lock
+setenvs.sh
