@@ -110,7 +110,7 @@ SparkPost Transmission API options:
 ### Sending from a file with `To`, `Cc` and `Bcc` from the file
 
 ```
- ./sparkySendEml.py --infile SparkPost_Messenger_Aug_2017.eml
+./sparkySendEml.py --infile tests/SparkPost_Messenger_Aug_2017.eml
 ```
 
 ```
@@ -143,14 +143,53 @@ cat example.eml | ./sparkySendEml.py
 An example of setting a `campaign_id`, `start_time`, `ip_pool`, `transactional` flag, `metadata` etc
 
 ```
-./sparkySendEml.py --infile example.eml --campaign_id "scheduled test" --options.start_time "2021-01-21T19:30:30+00:00" --options.ip_pool warming --options.transactional true --metadata '{"pets": ["cat", "dog"]}' --description "awesome campaign" --options.open_tracking true --options.click_tracking true
+./sparkySendEml.py --infile tests/example.eml --campaign_id "scheduled test" --options.start_time "2021-01-21T19:30:30+00:00" --options.ip_pool warming --options.transactional true --metadata '{"pets": ["cat", "dog"]}' --description "awesome campaign" --options.open_tracking true --options.click_tracking true
 ```
 
 Attribute and option names match the [Transmission API documentation](https://developers.sparkpost.com/api/transmissions/#transmissions-create-a-transmission) - see this for more info.
 
+> Single quotes `'` are useful for enclosing JSON-format values that may include whitespace, such as `--metadata` and `--substitution_data`, without having to escape each double-quote `"` that is inside the JSON.
+
+### JSON and MIME tree outputs
+
+Instead of sending the email, you can instead print information on stdout using the following options:
+
+|Option|Purpose|
+|--|--|
+|`--json_out`|The API-call JSON|
+|`--mime_out`|Summary representation of the contents that would be sent - with headers and MIME parts (indented to show tree structure)|
+
+```
+./sparkySendEml.py --infile tests/example_with_attachment.eml --mime_out
+```
+
+Giving:
+```
+:
+:
+From "SparkPost Travis CI Test" <test@stevet-test.trymsys.net>
+Reply-To theteam@stevet-test.trymsys.net
+To Alice <alice@emltest.sink.sparkpostmail.com>, "Bob Lumreeker" <bob.lumreeker@gmail.com>
+Cc "Charlie" <charles.tapdancer@gmail.com>, "Diana" <diana@emltest.sink.sparkpostmail.com>
+Subject This is a test mail with attachment
+MIME-Version 1.0
+Content-Type multipart/mixed; boundary="------------2F7D40CA6945D4D0D15D3D26"
+Content-Language en-GB
+
+  Content-Type text/html; charset=utf-8
+  Content-Transfer-Encoding 7bit
+
+  Content-Type image/svg+xml; name="SparkPost_Logo_2-Color_Gray-Orange_RGB.svg"
+  Content-Transfer-Encoding base64
+  Content-Disposition attachment; filename="SparkPost_Logo_2-Color_Gray-Orange_RGB.svg"
+```
+
+Note the BCCs are stripped out prior to sending, as expected.
+
 ## Preparing input files for update
+
 The nature of eml files is fully-formed, RFC-compliant content.  You can make files by creating a draft in your
-favourite email client such as OSX mail.app or Mozilla Thunderbird, and saving it as a file (or just dragging it to the desktop).
+favorite email client such as OSX mail.app or Mozilla Thunderbird, and saving it as a file (or just dragging it to the desktop).
 
 Open the file in a text editor, check and remove any headers you don't want. The minimum you need are `From:`, `To:` and you should also have a `Subject:`
 MIME parts will be present in a rich email too.
@@ -173,11 +212,7 @@ EDITOR'S PICK
 :
 ```
 
-The tool sends to the recipients specified in the `.eml` file, so it's ideal for personalised mailings where you have fully-formed messages.
-
 ## See also
-
-Article explaining why you should run your campaigns with individual To: recipients: [Thou Shalt Not BCC.](https://www.sparkpost.com/blog/thou-shalt-not-bcc-pitfalls/)
 
 [Using CC and BCC with the REST API.](https://www.sparkpost.com/docs/faq/cc-bcc-with-rest-api/)
 
@@ -185,6 +220,8 @@ Article explaining why you should run your campaigns with individual To: recipie
 
 If you want to leverage the template substitution and multi-recipient generation capability of SparkPost, take look at
 [Sending Scheduled Mailings Simply with SparkPost.](https://www.sparkpost.com/blog/sending-scheduled-mailings-simply/)
+
+Article explaining why you should usually run personalized marketing campaigns with individual To: recipients: [Thou Shalt Not BCC.](https://www.sparkpost.com/blog/thou-shalt-not-bcc-pitfalls/)
 
 ## Current RFCs (at time of writing)
 

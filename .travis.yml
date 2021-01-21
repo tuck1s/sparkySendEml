@@ -18,18 +18,23 @@ script:
   # with specified file, with various input flags,  actually sends mail
   # use yaml line folding
   - ./sparkySendEml.py
-    --infile example.eml --campaign_id "travis CI sparkySendEml test"
+    --infile tests/example.eml --campaign_id "travis CI sparkySendEml test"
     --options.ip_pool default --options.transactional true
     --description "awesome campaign" --options.open_tracking true
     --options.click_tracking true
 
   # check JSON output
   - ./sparkySendEml.py --json_out
-    --infile example.eml --campaign_id "travis CI sparkySendEml test"
+    --infile tests/example.eml --campaign_id "travis CI sparkySendEml test"
     --options.ip_pool default --options.transactional true
     --description "awesome campaign" --options.open_tracking true
     --options.click_tracking true >tmp_test.json
   - diff tmp_test.json tests/ref.json
+
+  # check MIME tree output
+  - ./sparkySendEml.py --mime_out
+    --infile tests/example_with_attachment.eml >tmp_mime_test.txt
+  - diff tmp_mime_test.txt tests/mime_ref.txt
 
 branches:
   only:

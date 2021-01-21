@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import argparse, time, json, email, requests
-from common import eprint, getenv_check, getenv, host_cleanup, strip_start
+from common import eprint, getenv_check, getenv, host_cleanup, strip_start, xstr
 
 T = 20                  # Global timeout value for API requests
 
@@ -61,13 +61,14 @@ def send_transmission(url, apiKey, tx_obj):
         return None
 
 
-def tx_api_obj(arg_dict):
+def tx_api_obj(arg_dict, non_api_opts):
     """
     Build a SparkPost Transmission API object from the command-line args (passed in as a dict), recipients, and mesage content
+    Ignore non-API options
     """
     send_obj = { 'options': {}  }
     for key, val in arg_dict.items(): # iterate through args as a dict
-        if key in ['infile', 'json_out'] or val == None: # these are not needed in the API call
+        if key in non_api_opts or val == None: # these are not needed in the API call
             continue
         elif key.startswith(opt_prefix):
             stderr_report(key, val)
@@ -111,6 +112,25 @@ def stderr_report(key, val, **kwargs):
     eprint('{:24} {}'.format(key + ':', val), **kwargs)
 
 
+def print_part(m, depth):
+    pad = '  ' * depth
+    for i in m.items():
+        hname, hcontent = i
+        hcontent = hcontent.replace('\n', '')           # print all on one line for ease of reading
+        print('{}{} {}'.format(pad, xstr(hname), xstr(hcontent)))
+    print()
+
+
+def show_mime_part(m, depth=0):
+    """
+    Recursively print a summary tree of MIME parts
+    """
+    print_part(m, depth)
+    if m.is_multipart():
+        for p in m.get_payload():
+            show_mime_part(p, depth + 1)
+
+
 # -----------------------------------------------------------------------------------------
 # Main code
 # -----------------------------------------------------------------------------------------
@@ -120,6 +140,8 @@ parser.add_argument('-i', '--infile', type=argparse.FileType('r'), default='-',
     help='File containing RFC822 formatted content including subject, from, to, and MIME parts. If omitted, will read from stdin')
 parser.add_argument('--json_out', action='store_true',
     help='Write the transmission API JSON on stdout instead of sending.')
+parser.add_argument('--mime_out', action='store_true',
+    help='Write an indented summary of the MIME parts on stdout instead of sending.')
 
 # See https://developers.sparkpost.com/api/transmissions/#transmissions-create-a-transmission
 group = parser.add_argument_group('SparkPost Transmission API attributes')
@@ -159,7 +181,8 @@ host = host_cleanup(getenv('SPARKPOST_HOST', default='api.sparkpost.com'))
 url = host + '/api/v1/transmissions/'
 
 # Compose transmission object, with attributes, options, recipients and content
-send_obj = tx_api_obj(vars(args))
+non_api_opts = ['infile', 'json_out', 'mime_out']
+send_obj = tx_api_obj(vars(args), non_api_opts)
 send_obj['recipients'] = recipients(msg)
 remove_bcc(msg)
 msg_str = msg.as_bytes().decode('utf8')
@@ -168,7 +191,10 @@ send_obj['content'] = {'email_rfc822': msg_str}
 stderr_report('Subject',msg['subject'])
 stderr_report('Message length (bytes)',len(msg_str))
 if args.json_out:
-    print(json.dumps(send_obj, indent=2, sort_keys=True)) # Sort keys so output is predictable
+    # Sort keys so output is predictable, and pretty-print indent for human consumption
+    print(json.dumps(send_obj, indent=2, sort_keys=True))
+elif args.mime_out:
+    show_mime_part(msg)
 else:
     stderr_report('Sending via', url)
     res = send_transmission(url, apiKey, send_obj)

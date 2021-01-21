@@ -1,0 +1,16 @@
+From "SparkPost Travis CI Test" <test@stevet-test.trymsys.net>
+Reply-To theteam@stevet-test.trymsys.net
+To Alice <alice@emltest.sink.sparkpostmail.com>, "Bob Lumreeker" <bob.lumreeker@gmail.com>
+Cc "Charlie" <charles.tapdancer@gmail.com>, "Diana" <diana@emltest.sink.sparkpostmail.com>
+Subject This is a test mail with attachment
+MIME-Version 1.0
+Content-Type multipart/mixed; boundary="------------2F7D40CA6945D4D0D15D3D26"
+Content-Language en-GB
+
+  Content-Type text/html; charset=utf-8
+  Content-Transfer-Encoding 7bit
+
+  Content-Type image/svg+xml; name="SparkPost_Logo_2-Color_Gray-Orange_RGB.svg"
+  Content-Transfer-Encoding base64
+  Content-Disposition attachment; filename="SparkPost_Logo_2-Color_Gray-Orange_RGB.svg"
+
