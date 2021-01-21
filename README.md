@@ -4,7 +4,7 @@
 
 # sparkySendEml
 
-[![Build Status](https://travis-ci.com/tuck1s/sparkySendEml.svg?branch=master)](https://travis-ci.com/tuck1s/sparkySendEml)
+[![Build Status](https://travis-ci.com/tuck1s/sparkySendEml.svg?branch=main)](https://travis-ci.com/tuck1s/sparkySendEml)
 
 Parse and send an RFC822-compliant file (e.g. .eml extension) via SparkPost.
 
@@ -12,7 +12,7 @@ This is useful in the following scenarios:
 - You have an email generation tool-chain that produces fully formed RFC-compliant email files
 - You cannot inject using secure SMTP (STARTTLS) maybe due to limitations in your infrastructure
 
-> API injection can be faster than SMTP, particularly if you are geographically far from our injection endpoints (because SMTP is a chatty protocol).
+> API injection can also be faster than SMTP, particularly if you are geographically far from our injection endpoints (because SMTP is a chatty protocol).
 
 ## Easy installation
 
