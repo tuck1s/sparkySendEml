@@ -105,7 +105,10 @@ SparkPost Transmission API options:
                         Enable or disable substitutions. Can only set to false when using an inline template. If omitted, default is true
 ```
 
-## Example output
+## Examples
+
+### Sending from a file with `To`, `Cc` and `Bcc` from the file
+
 ```
  ./sparkySendEml.py --infile SparkPost_Messenger_Aug_2017.eml
 ```
@@ -125,8 +128,25 @@ Rejected recipients:     0
 Transmission id:         6920251779208728743
 ```
 
-Note the `Cc:` `Bcc:` entries above are to demo the capabilities of the tool. Usually you would create a campaign mailing
-with just a single `To:` recipient.
+Note the `Cc:` `Bcc:` entries above are to demo the capabilities of the tool. Usually you would create a campaign mailing with just a single `To:` recipient.
+
+### Piped input
+
+Instead of `--infile`, content can be read from `stdin`. You can pipe content  into the tool from another program, e.g.
+
+```
+cat example.eml | ./sparkySendEml.py
+```
+
+### Setting SparkPost API attributes and options
+
+An example of setting a `campaign_id`, `start_time`, `ip_pool`, `transactional` flag, `metadata` etc
+
+```
+./sparkySendEml.py --infile example.eml --campaign_id "scheduled test" --options.start_time "2021-01-21T19:30:30+00:00" --options.ip_pool warming --options.transactional true --metadata '{"pets": ["cat", "dog"]}' --description "awesome campaign" --options.open_tracking true --options.click_tracking true
+```
+
+Attribute and option names match the [Transmission API documentation](https://developers.sparkpost.com/api/transmissions/#transmissions-create-a-transmission) - see this for more info.
 
 ## Preparing input files for update
 The nature of eml files is fully-formed, RFC-compliant content.  You can make files by creating a draft in your

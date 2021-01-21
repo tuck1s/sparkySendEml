@@ -1,0 +1,34 @@
+From: "SparkPost Travis CI Test" <test@stevet-test.trymsys.net>
+Reply-To: theteam@stevet-test.trymsys.net
+To: Alice <alice@emltest.sink.sparkpostmail.com>, "Bob Lumreeker" <bob.lumreeker@gmail.com>
+Cc: "Charlie" <charles.tapdancer@gmail.com>, "Diana" <diana@emltest.sink.sparkpostmail.com>
+Bcc: "Ewina" <ed@emltest.sink.sparkpostmail.com>, "Fred" <steve.tuck@sparkpost.com>
+Subject: This is a test mail sent when sparkySendEml code is checked in
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+	boundary="----=_Part_59911055_42259284.1503007218447"
+
+------=_Part_59911055_42259284.1503007218447
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Editor=E2=80=99s Pick
+10 Steps to Great Email Deliverability
+
+Get 10 practical tips from SparkPost's email pros that will help you start =
+sending messages with great deliverability and inbox performance.
+
+------=_Part_59911055_42259284.1503007218447
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <p><strong>Hi there!</strong>
+    <a data-msys-linkname="test link" href="https://sparkpost.com">Avocado Industries</a>
+    </p>
+</body>
+
+------=_Part_59911055_42259284.1503007218447--
