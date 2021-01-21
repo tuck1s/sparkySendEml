@@ -1,0 +1,51 @@
+{
+  "options": {
+    "ip_pool": "default",
+    "open_tracking": true,
+    "click_tracking": true,
+    "transactional": true
+  },
+  "campaign_id": "travis CI sparkySendEml test",
+  "description": "awesome campaign",
+  "recipients": [
+    {
+      "address": {
+        "name": "Alice",
+        "email": "alice@emltest.sink.sparkpostmail.com"
+      }
+    },
+    {
+      "address": {
+        "name": "Bob Lumreeker",
+        "email": "bob.lumreeker@gmail.com"
+      }
+    },
+    {
+      "address": {
+        "name": "Charlie",
+        "email": "charles.tapdancer@gmail.com"
+      }
+    },
+    {
+      "address": {
+        "name": "Diana",
+        "email": "diana@emltest.sink.sparkpostmail.com"
+      }
+    },
+    {
+      "address": {
+        "name": "Ewina",
+        "email": "ed@emltest.sink.sparkpostmail.com"
+      }
+    },
+    {
+      "address": {
+        "name": "Fred",
+        "email": "steve.tuck@sparkpost.com"
+      }
+    }
+  ],
+  "content": {
+    "email_rfc822": "From: \"SparkPost Travis CI Test\" <test@stevet-test.trymsys.net>\nReply-To: theteam@stevet-test.trymsys.net\nTo: Alice <alice@emltest.sink.sparkpostmail.com>,\n \"Bob Lumreeker\" <bob.lumreeker@gmail.com>\nCc: \"Charlie\" <charles.tapdancer@gmail.com>,\n \"Diana\" <diana@emltest.sink.sparkpostmail.com>\nSubject: This is a test mail sent when sparkySendEml code is checked in\nMIME-Version: 1.0\nContent-Type: multipart/alternative;\n\tboundary=\"----=_Part_59911055_42259284.1503007218447\"\n\n------=_Part_59911055_42259284.1503007218447\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: quoted-printable\n\nEditor=E2=80=99s Pick\n10 Steps to Great Email Deliverability\n\nGet 10 practical tips from SparkPost's email pros that will help you start =\nsending messages with great deliverability and inbox performance.\n\n------=_Part_59911055_42259284.1503007218447\nContent-Type: text/html; charset=UTF-8\nContent-Transfer-Encoding: 7bit\n\n<!DOCTYPE html>\n<html lang=\"en\">\n\n<body>\n    <p><strong>Hi there!</strong>\n    <a data-msys-linkname=\"test link\" href=\"https://sparkpost.com\">Avocado Industries</a>\n    </p>\n</body>\n\n------=_Part_59911055_42259284.1503007218447--\n"
+  }
+}
