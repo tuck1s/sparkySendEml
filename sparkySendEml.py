@@ -138,9 +138,11 @@ parser = argparse.ArgumentParser(
     description='Parse and send an RFC822-compliant file (e.g. .eml extension) via SparkPost.')
 parser.add_argument('-i', '--infile', type=argparse.FileType('r'), default='-',
     help='File containing RFC822 formatted content including subject, from, to, and MIME parts. If omitted, will read from stdin')
-parser.add_argument('--json_out', action='store_true',
+
+out_opts = parser.add_mutually_exclusive_group(required=False)
+out_opts.add_argument('--json_out', action='store_true',
     help='Write the transmission API JSON on stdout instead of sending.')
-parser.add_argument('--mime_out', action='store_true',
+out_opts.add_argument('--mime_out', action='store_true',
     help='Write an indented summary of the MIME parts on stdout instead of sending.')
 
 # See https://developers.sparkpost.com/api/transmissions/#transmissions-create-a-transmission

@@ -54,7 +54,7 @@ There are a lot of parameters, but they are optional.
 ```
 
 ```
-usage: sparkySendEml.py [-h] [-i INFILE] [--json_out] [--campaign_id CAMPAIGN_ID] [--description DESCRIPTION] [--return_path RETURN_PATH]
+usage: sparkySendEml.py [-h] [-i INFILE] [--json_out | --mime_out] [--campaign_id CAMPAIGN_ID] [--description DESCRIPTION] [--return_path RETURN_PATH]
                         [--metadata METADATA] [--substitution_data SUBSTITUTION_DATA] [--options.start_time OPTIONS.START_TIME]
                         [--options.ip_pool OPTIONS.IP_POOL] [--options.open_tracking {False,True}] [--options.click_tracking {False,True}]
                         [--options.transactional {False,True}] [--options.sandbox {False,True}] [--options.skip_suppression {False,True}]
@@ -67,6 +67,7 @@ optional arguments:
   -i INFILE, --infile INFILE
                         File containing RFC822 formatted content including subject, from, to, and MIME parts. If omitted, will read from stdin
   --json_out            Write the transmission API JSON on stdout instead of sending.
+  --mime_out            Write an indented summary of the MIME parts on stdout instead of sending.
 
 SparkPost Transmission API attributes:
   --campaign_id CAMPAIGN_ID
