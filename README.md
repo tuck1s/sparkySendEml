@@ -111,7 +111,7 @@ SparkPost Transmission API options:
 ### Sending from a file with `To`, `Cc` and `Bcc` from the file
 
 ```
-./sparkySendEml.py --infile tests/SparkPost_Messenger_Aug_2017.eml
+./sparkySendEml.py --infile tests/SparkPost_The_Post_Jan_2021.eml
 ```
 
 ```
@@ -121,12 +121,12 @@ Cc:                      "Charlie" <charles.tapdancer@gmail.com>
 Cc:                      "Diana" <diana@emltest.sink.sparkpostmail.com>
 Bcc:                     "Ewina" <ed@emltest.sink.sparkpostmail.com>
 Bcc:                     "Fred" <steve.tuck@sparkpost.com>
-Subject:                 The Messenger: Email Insights from SparkPost
-Message length (bytes):  42877
+Subject:                 Are you still watching? 👀
+Message length (bytes):  61070
 Sending via:             https://api.sparkpost.com/api/v1/transmissions/
 Accepted recipients:     6
 Rejected recipients:     0
-Transmission id:         6920251779208728743
+Transmission id:         6930575557738484595
 ```
 
 Note the `Cc:` `Bcc:` entries above are to demo the capabilities of the tool. Usually you would create a campaign mailing with just a single `To:` recipient.

@@ -1,6 +1,8 @@
 From: "SparkPost Travis CI Test" <test@stevet-test.trymsys.net>
 Reply-To: theteam@stevet-test.trymsys.net
-To: bob.lumreeker@gmail.com
+To: Alice <alice@emltest.sink.sparkpostmail.com>, "Bob Lumreeker" <bob.lumreeker@gmail.com>
+Cc: "Charlie" <charles.tapdancer@gmail.com>, "Diana" <diana@emltest.sink.sparkpostmail.com>
+Bcc: "Ewina" <ed@emltest.sink.sparkpostmail.com>, "Fred" <steve.tuck@sparkpost.com>
 Subject: Are you still watching? 👀
 MIME-Version: 1.0
 Content-Type: multipart/alternative; boundary="----=_Part_61311230_1081069816.1611245001901"
